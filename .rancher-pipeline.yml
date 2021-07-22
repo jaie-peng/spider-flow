@@ -1,0 +1,14 @@
+stages:
+- name: complie
+  steps:
+  - runScriptConfig:
+      image: java:8
+      shellScript: mvn package
+- name: build image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: spider-flow
+timeout: 60
+notification: {}
